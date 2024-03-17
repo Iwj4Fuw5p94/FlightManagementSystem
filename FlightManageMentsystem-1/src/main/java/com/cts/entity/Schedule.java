@@ -6,19 +6,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-//@Entity
+import jakarta.persistence.OneToOne;
+@Entity
 public class Schedule {
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long schedduleId;
+	@OneToOne
 	private Airport sourceAirport;
+	@OneToOne
 	private Airport destinationAirport;
 	private LocalDate arrivalTime;
 	private LocalDate departureTime;
 	
 	
 	public Schedule() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDate arrivalTime, LocalDate departureTime) {

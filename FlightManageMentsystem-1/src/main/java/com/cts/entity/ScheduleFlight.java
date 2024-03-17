@@ -1,23 +1,31 @@
 package com.cts.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
-//@Entity
+@Entity
+
 public class ScheduleFlight {
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long scheduleFlightId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Flight flight;
 	
 	private long availableSeats;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Schedule schedule;
 	
 	public ScheduleFlight() {
-		// TODO Auto-generated constructor stub
+		
+
 	}
 
 	

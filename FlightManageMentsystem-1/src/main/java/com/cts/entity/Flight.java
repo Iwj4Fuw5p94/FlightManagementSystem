@@ -15,7 +15,7 @@ public class Flight {
 	private String carrierName;
 	private long seatCapacity;
 	public Flight() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Flight(long flightNumber, String flightModel, String carrierName, long seatCapacity) {
 		super();

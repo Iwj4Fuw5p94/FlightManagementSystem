@@ -1,0 +1,10 @@
+1.. project understanding
+
+2.. Entity creation
+
+3... interface creation
+
+4.. empty service implementation
+
+5.. entity creation in database 
+

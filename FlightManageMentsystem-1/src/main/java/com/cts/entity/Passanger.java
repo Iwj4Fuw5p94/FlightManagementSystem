@@ -18,7 +18,7 @@ public class Passanger {
 	
 	
 	public Passanger() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

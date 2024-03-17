@@ -15,20 +15,20 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
 //@Entity
 public class Booking {
 	
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.AUTO)
-
 	private long bookingId;
 	@OneToOne(cascade = CascadeType.ALL)
 	private User userId;
 	
 	private LocalDate bookingDate;
 	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "pnrNumber")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "pnrNumber")
 	
 	
 	private List<Passanger> passangerList;

@@ -1,20 +1,12 @@
-package com.cts.dao;
-
-import java.util.List;
-
-import com.cts.entity.Booking;
-
-public interface IBookingDao{
-	
-	public Booking addBooking(Booking booking);
-	
-	public Booking modifyBooking(Booking booking);
-	
-	public List<Booking> viewBookings();
-	
-	public void deleteBooking(long bookingId);
-	
-	
-	
-	
-}
+//package com.cts.dao;
+//
+//import java.util.List;
+//
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.stereotype.Repository;
+//
+//import com.cts.entity.Booking;
+//@Repository
+//public interface IBookingDao extends JpaRepository<Booking,Long>{
+//	
+//}

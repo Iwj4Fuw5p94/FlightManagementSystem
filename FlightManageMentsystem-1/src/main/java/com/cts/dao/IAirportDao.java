@@ -2,12 +2,13 @@ package com.cts.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.cts.entity.Airport;
 
-public interface IAirportDao{
+@Repository
+public interface IAirportDao extends JpaRepository<Airport,Long>{
 	
-	public List<Airport> viewAirports();
-	
-	public Airport viewAirport(String airportCode);
 
 }
