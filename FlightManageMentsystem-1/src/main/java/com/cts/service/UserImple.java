@@ -28,12 +28,13 @@ public class UserImple implements IUser {
 
 	@Override
 	public Optional<User> viewUser(long userId) throws UserNotFoundException {
-
+		
 		Optional<User> findOptional = iUserDao.findById(userId);
 		if (findOptional.isEmpty()) {
 			throw new UserNotFoundException("user not found for id " + userId);
 
 		}
+//		when we dont know what it will return than we ll use optional its a java8 feature
 
 		return findOptional;
 
@@ -47,14 +48,22 @@ public class UserImple implements IUser {
 	}
 
 	@Override
-	public User updateUSer(User user) {
+	public User updateUSer(User user) throws UserNotFoundException {
+
+		  User existingUser = iUserDao.findById(user.getUserId()).orElseThrow(() -> new UserNotFoundException("User not found"));
+		  if(existingUser!=null) {
+			  existingUser.setUserType(user.getUserType());
+			  existingUser.setEmail(user.getEmail());
+			  existingUser.setUserPhone(user.getUserPhone());
+		  }
 		
-		return null;
+		return iUserDao.save(existingUser);
 	}
 
 	@Override
-	public void deleteUser(User userId) {
-		// TODO Auto-generated method stub
+	public void deleteUser(Long userId) {
+		 iUserDao.deleteById(userId);
+		return;
 
 	}
 

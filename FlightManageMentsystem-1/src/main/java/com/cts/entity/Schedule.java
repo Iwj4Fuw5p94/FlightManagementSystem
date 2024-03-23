@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 @Entity
+
 public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

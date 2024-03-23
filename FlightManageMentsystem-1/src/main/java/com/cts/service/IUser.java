@@ -14,9 +14,9 @@ public interface IUser {
 	
 	public List<User> viewUser() throws UserNotFoundException;
 	
-	public User updateUSer(User user);
+	public User updateUSer(User user) throws UserNotFoundException;
 	
-	public void deleteUser(User userId);
+	public void deleteUser(Long userId);
 	
 	
 	

@@ -10,7 +10,6 @@ public class AirportImple implements IAirport{
 	@Autowired
 	IAirport iAirport;
 	
-
 	@Override
 	public List<Airport> viewAirports() {
 		
