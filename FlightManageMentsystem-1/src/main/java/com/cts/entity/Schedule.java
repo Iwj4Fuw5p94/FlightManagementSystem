@@ -17,7 +17,9 @@ public class Schedule {
 	private Airport sourceAirport;
 	@OneToOne
 	private Airport destinationAirport;
+	
 	private LocalDate arrivalTime;
+	
 	private LocalDate departureTime;
 	
 	

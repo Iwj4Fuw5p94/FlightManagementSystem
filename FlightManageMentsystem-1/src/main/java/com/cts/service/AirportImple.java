@@ -3,22 +3,24 @@ package com.cts.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.cts.dao.IAirportDao;
 import com.cts.entity.Airport;
-
+@Service
 public class AirportImple implements IAirport{
 	@Autowired
-	IAirport iAirport;
+	IAirportDao iAirport;
 	
 	@Override
 	public List<Airport> viewAirports() {
 		
-		return null;
+		return iAirport.findAll();
 	}
 
 	@Override
 	public Airport viewAirport(String airportCode) {
-		return null;
+		return iAirport.findByAirportCode(airportCode);
 	}
 
 }

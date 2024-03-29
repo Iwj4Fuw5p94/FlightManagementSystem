@@ -57,8 +57,6 @@ public class UserController {
 	
 	public User putMethodName(@RequestBody User user) throws UserNotFoundException{
 		
-		//TODO: process PUT request
-		
 		return iserImple.updateUSer(user);
 	}
 	

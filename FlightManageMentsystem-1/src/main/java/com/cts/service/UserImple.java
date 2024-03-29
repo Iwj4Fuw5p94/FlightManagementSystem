@@ -56,15 +56,12 @@ public class UserImple implements IUser {
 			  existingUser.setEmail(user.getEmail());
 			  existingUser.setUserPhone(user.getUserPhone());
 		  }
-		
 		return iUserDao.save(existingUser);
 	}
-
 	@Override
 	public void deleteUser(Long userId) {
 		 iUserDao.deleteById(userId);
 		return;
-
 	}
 
 }

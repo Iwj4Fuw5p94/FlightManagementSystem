@@ -15,13 +15,14 @@ public interface IScheduledFlightDaoImpl{
 	
 	public List<ScheduleFlight> viewScheduleFlights(Airport aipAirportFrom,Airport airportTo,LocalDate localDate)throws FlightNotFoundEXception;
 	
-	public List<ScheduleFlight> viewScheduleFlight(long flightNumber)throws FlightNotFoundEXception;
+	public ScheduleFlight viewScheduleFlight(long flightNumber)throws FlightNotFoundEXception;
 	
 	public List<ScheduleFlight> viewScheduleFlights()throws FlightNotFoundEXception;
 	
 	public ScheduleFlight modifyScheduleFlight(Flight flight,Schedule schedule,long flightNumber);
 	
-	public void deleteScheduleFlight(Flight flightNumber);
+//	doubt i have 
+	public ScheduleFlight deleteScheduleFlight(Flight flightNumber);
 	
 	
 	

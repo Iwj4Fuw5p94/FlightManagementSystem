@@ -13,14 +13,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
-//@Entity
+@Entity
 public class Booking {
 	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long bookingId;
 	@OneToOne(cascade = CascadeType.ALL)
 	private User userId;
@@ -28,14 +29,13 @@ public class Booking {
 	private LocalDate bookingDate;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "pnrNumber")
-	
-	
+//	@JoinColumn(name = "pnrNumber")
+//	
 	private List<Passanger> passangerList;
 	
 	private double ticketCost;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "flightNumber")
 	private Flight flight;
 	

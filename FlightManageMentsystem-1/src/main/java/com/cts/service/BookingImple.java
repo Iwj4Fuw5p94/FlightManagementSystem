@@ -2,8 +2,11 @@ package com.cts.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.cts.entity.Booking;
 
+@Service
 public class BookingImple implements IBookingDao{
 
 	@Override
