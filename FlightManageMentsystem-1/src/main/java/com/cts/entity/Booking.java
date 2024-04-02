@@ -23,12 +23,12 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long bookingId;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
 	private User userId;
 	
 	private LocalDate bookingDate;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL,orphanRemoval = true)
 //	@JoinColumn(name = "pnrNumber")
 //	
 	private List<Passanger> passangerList;

@@ -35,7 +35,6 @@ public class AirportController {
 	@GetMapping("/viewAirport{airportCode}")
 	public Airport findAirport(@RequestBody @PathVariable String airportCode){
 		logger.info("find airport successfully run");
-
 		return airportImple.viewAirport(airportCode);
 		
 	}

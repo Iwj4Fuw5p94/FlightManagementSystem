@@ -55,8 +55,7 @@ public class UserController {
 	
 	@PutMapping("update/{id}")
 	
-	public User putMethodName(@RequestBody User user) throws UserNotFoundException{
-		
+	public User updateUser(@RequestBody User user) throws UserNotFoundException{
 		return iserImple.updateUSer(user);
 	}
 	

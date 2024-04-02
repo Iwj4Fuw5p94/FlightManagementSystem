@@ -1,9 +1,12 @@
 package com.cts.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Passanger {
@@ -15,79 +18,78 @@ public class Passanger {
 	private long passangerAge;
 	private long passangerUIN;
 	private double luggage;
-	
-	
+	@ManyToOne()
+	@JoinColumn(name = "bookingId") // Name of the foreign key column in the passenger table
+	private Booking booking;
+
 	public Passanger() {
-		
+
 	}
-	
-	
-	public Passanger(long pnrNumber, String passangerName, long passangerAge, long passangerUIN, double luggage) {
+
+	public Passanger(long pnrNumber, String passangerName, long passangerAge, long passangerUIN, double luggage,
+			Booking booking) {
 		super();
 		this.pnrNumber = pnrNumber;
 		this.passangerName = passangerName;
 		this.passangerAge = passangerAge;
 		this.passangerUIN = passangerUIN;
 		this.luggage = luggage;
+		this.booking = booking;
 	}
 
+	@Override
+	public String toString() {
+		return "Passanger [pnrNumber=" + pnrNumber + ", passangerName=" + passangerName + ", passangerAge="
+				+ passangerAge + ", passangerUIN=" + passangerUIN + ", luggage=" + luggage + ", booking=" + booking
+				+ "]";
+	}
 
 	public long getPnrNumber() {
 		return pnrNumber;
 	}
 
-
 	public void setPnrNumber(long pnrNumber) {
 		this.pnrNumber = pnrNumber;
 	}
-
 
 	public String getPassangerName() {
 		return passangerName;
 	}
 
-
 	public void setPassangerName(String passangerName) {
 		this.passangerName = passangerName;
 	}
-
 
 	public long getPassangerAge() {
 		return passangerAge;
 	}
 
-
 	public void setPassangerAge(long passangerAge) {
 		this.passangerAge = passangerAge;
 	}
-
 
 	public long getPassangerUIN() {
 		return passangerUIN;
 	}
 
-
 	public void setPassangerUIN(long passangerUIN) {
 		this.passangerUIN = passangerUIN;
 	}
-
 
 	public double getLuggage() {
 		return luggage;
 	}
 
-
 	public void setLuggage(double luggage) {
 		this.luggage = luggage;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Passanger [pnrNumber=" + pnrNumber + ", passangerName=" + passangerName + ", passangerAge="
-				+ passangerAge + ", passangerUIN=" + passangerUIN + ", luggage=" + luggage + "]";
+	public Booking getBooking() {
+		return booking;
 	}
-	
-	
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
 
 }
