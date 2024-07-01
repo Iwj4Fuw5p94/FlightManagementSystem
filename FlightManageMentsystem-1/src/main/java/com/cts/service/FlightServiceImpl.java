@@ -34,15 +34,14 @@ public class FlightServiceImpl implements IFlightDao {
 
 	@Override
 	public List<Flight> viewFlights() {
-		// TODO Auto-generated method stub
 		return flightDao.findAll();
 	}
 
 	@Override
-	public void deleteFlight(long flightNumber) {
+	public void deleteFlight(long flightNumber){
 		flightDao.deleteById(flightNumber);
 		
-		
 	}
+	
 
 }

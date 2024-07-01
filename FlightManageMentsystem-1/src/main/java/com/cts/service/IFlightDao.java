@@ -14,7 +14,7 @@ public Flight addFlight(Flight flight);
 	
 	public List<Flight> viewFlights();
 	
-	public void deleteFlight(long flightNumber);
+	public void deleteFlight(long flightNumber) ;
 		
 
 }

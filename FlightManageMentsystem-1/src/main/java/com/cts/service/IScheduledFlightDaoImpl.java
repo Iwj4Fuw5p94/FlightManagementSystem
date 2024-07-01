@@ -22,7 +22,7 @@ public interface IScheduledFlightDaoImpl{
 	public ScheduleFlight modifyScheduleFlight(Flight flight,Schedule schedule,long flightNumber);
 	
 //	doubt i have 
-	public ScheduleFlight deleteScheduleFlight(Flight flightNumber);
+	public String deleteScheduleFlight(long flightNumber);
 	
 	
 	

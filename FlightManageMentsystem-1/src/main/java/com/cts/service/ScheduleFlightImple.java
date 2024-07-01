@@ -1,4 +1,4 @@
-	package com.cts.service;
+package com.cts.service;
 
 import java.time.LocalDate;
 
@@ -14,6 +14,7 @@ import com.cts.entity.Flight;
 import com.cts.entity.Schedule;
 import com.cts.entity.ScheduleFlight;
 
+
 @Service
 public class ScheduleFlightImple implements IScheduledFlightDaoImpl{
 	
@@ -25,7 +26,7 @@ public class ScheduleFlightImple implements IScheduledFlightDaoImpl{
 		
 		return iScheduledFlightDao.save(scheduleFlight);
 	}
-
+	
 	@Override
 	public List<ScheduleFlight> viewScheduleFlights(Airport aipAirportFrom, Airport airportTo, LocalDate localDate) {
 		return null;
@@ -49,8 +50,9 @@ public class ScheduleFlightImple implements IScheduledFlightDaoImpl{
 	}
 
 	@Override
-	public ScheduleFlight deleteScheduleFlight(Flight flightNumber) {
-		return null;
+	public String deleteScheduleFlight(long flightNumber) {
+			iScheduledFlightDao.deleteById(flightNumber);
+			return "Flight deleted successfully";
 	}
 
 	
