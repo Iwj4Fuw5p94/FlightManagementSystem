@@ -12,6 +12,4 @@ import com.cts.entity.Booking;
 @Repository
 public interface IBookingDao extends JpaRepository<Booking,Long>{
 	
-			
-	
 }

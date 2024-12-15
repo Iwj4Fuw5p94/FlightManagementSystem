@@ -11,10 +11,6 @@ import com.cts.entity.Airport;
 
 @Repository
 public interface IAirportDao extends JpaRepository<Airport,Long>{	
-	
-	
-	
-	public Airport findByAirportCode(String airportCode);
-	
 
+	public Airport findByAirportCode(String airportCode);
 }
