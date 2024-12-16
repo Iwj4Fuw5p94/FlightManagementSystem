@@ -26,9 +26,17 @@ public class AuthRequest {
 	@PostMapping("/register")
     public String register(@RequestBody UserInfo userInfo) {
         repository.save(userInfo);
+        userInfo.setRole("ROLE_USER"); // Default role
         return "User registered successfully!";
     }
 	
+	public UserInfo registerUser(UserInfo userInfo) {
+	    if (userInfo.getRole() == null || userInfo.getRole().isEmpty()) {
+	        userInfo.setRole("ROLE_USER"); // Default role
+	    }
+	    return repository.save(userInfo);
+	}
+
 	 @PostMapping("/authenticate")
 	    public String authenticate(@RequestBody UserInfo userInfo) {
 	        UserInfo existingUser = repository.findByName(userInfo.getName())

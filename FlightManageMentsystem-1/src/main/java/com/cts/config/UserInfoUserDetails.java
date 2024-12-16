@@ -23,6 +23,7 @@ public class UserInfoUserDetails implements UserDetails {
         authorities= Arrays.stream(userInfo.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
+
     }
 
     @Override
