@@ -5,8 +5,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoder;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
+import com.cts.dao.UserInfoRepository;
+import com.cts.entity.UserInfo;
 
 import java.security.Key;
 import java.util.Date;
@@ -16,10 +21,19 @@ import java.util.function.Function;
 
 @Component
 public class JwtService {
+	
+	@Autowired
+	UserInfoRepository usernInfoRepository;
+	
 
 
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
-
+    
+    
+    public UserInfo addUser(UserInfo userInfo) {
+    	UserInfo userInfo2=usernInfoRepository.save(userInfo);
+    	return userInfo2;
+    }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
