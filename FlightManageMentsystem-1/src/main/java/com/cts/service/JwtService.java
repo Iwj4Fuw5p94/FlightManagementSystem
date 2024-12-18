@@ -1,23 +1,24 @@
 package com.cts.service;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoder;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
-
-import com.cts.dao.UserInfoRepository;
-import com.cts.entity.UserInfo;
-
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+
+import com.cts.dao.UserInfoRepository;
+import com.cts.entity.UserInfo;
+import com.cts.exceptions.UserAlreadyExistException;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtService {
@@ -30,9 +31,22 @@ public class JwtService {
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
     
     
-    public UserInfo addUser(UserInfo userInfo) {
-    	UserInfo userInfo2=usernInfoRepository.save(userInfo);
-    	return userInfo2;
+//    public UserInfo addUser(UserInfo userInfo) throws UserAlreadyExistException {
+//    	if(usernInfoRepository.existsByEmail(userInfo.getEmail())) {
+//    		throw new UserAlreadyExistException("email already exist");
+//    	}
+//    	UserInfo userInfo2=usernInfoRepository.save(userInfo);
+//    	return userInfo2;
+//    }
+    public UserInfo addUser(UserInfo userInfo) throws UserAlreadyExistException {
+        try {
+            if (usernInfoRepository.existsByEmail(userInfo.getEmail())) {
+                throw new UserAlreadyExistException("Email already exists: " + userInfo.getEmail());
+            }
+            return usernInfoRepository.save(userInfo);
+        } catch (DataIntegrityViolationException e) {
+            throw new UserAlreadyExistException("Email already exists: " + userInfo.getEmail());
+        }
     }
 
     public String extractUsername(String token) {

@@ -9,6 +9,8 @@ import com.cts.entity.UserInfo;
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long>{
 	
 	public Optional<UserInfo> findByName(String userName);
+	public boolean existsByEmail(String  email);
+	
 	
 
 }
