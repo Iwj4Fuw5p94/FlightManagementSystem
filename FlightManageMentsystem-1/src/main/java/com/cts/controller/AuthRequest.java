@@ -9,6 +9,8 @@ import com.cts.dao.UserInfoRepository;
 import com.cts.entity.UserInfo;
 import com.cts.exceptions.UserAlreadyExistException;
 import com.cts.service.JwtService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin("*")
 public class AuthRequest {
 	@Autowired
 	JwtService jwtService;
@@ -24,12 +27,8 @@ public class AuthRequest {
 	@Autowired
 	UserInfoRepository repository;
 	
-	
-	
 	@PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserInfo userInfo) throws UserAlreadyExistException {
-//        repository.save(userInfo);
-//        userInfo.setRole("ROLE_USER"); // Default role
 			jwtService.addUser(userInfo);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully!");
     }

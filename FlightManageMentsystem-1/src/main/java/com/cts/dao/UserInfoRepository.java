@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cts.entity.UserInfo;
+import com.cts.exceptions.UserAlreadyExistException;
 
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long>{
 	

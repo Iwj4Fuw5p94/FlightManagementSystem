@@ -26,28 +26,26 @@ public class JwtService {
 	@Autowired
 	UserInfoRepository usernInfoRepository;
 	
-
-
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
     
     
-//    public UserInfo addUser(UserInfo userInfo) throws UserAlreadyExistException {
-//    	if(usernInfoRepository.existsByEmail(userInfo.getEmail())) {
-//    		throw new UserAlreadyExistException("email already exist");
-//    	}
-//    	UserInfo userInfo2=usernInfoRepository.save(userInfo);
-//    	return userInfo2;
-//    }
     public UserInfo addUser(UserInfo userInfo) throws UserAlreadyExistException {
-        try {
-            if (usernInfoRepository.existsByEmail(userInfo.getEmail())) {
-                throw new UserAlreadyExistException("Email already exists: " + userInfo.getEmail());
-            }
-            return usernInfoRepository.save(userInfo);
-        } catch (DataIntegrityViolationException e) {
-            throw new UserAlreadyExistException("Email already exists: " + userInfo.getEmail());
-        }
+    	if(usernInfoRepository.existsByEmail(userInfo.getEmail())) {
+    		throw new UserAlreadyExistException("email already exist");
+    	}
+    	UserInfo userInfo2=usernInfoRepository.save(userInfo);
+    	return userInfo2;
     }
+//    public UserInfo addUser(UserInfo userInfo) throws UserAlreadyExistException {
+//        try {
+//            if (usernInfoRepository.existsByEmail(userInfo.getEmail())) {
+//                throw new UserAlreadyExistException("Email already exists: " + userInfo.getEmail());
+//            }
+//            return usernInfoRepository.save(userInfo);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new UserAlreadyExistException("Email already exists: " + userInfo.getEmail());
+//        }
+//    }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

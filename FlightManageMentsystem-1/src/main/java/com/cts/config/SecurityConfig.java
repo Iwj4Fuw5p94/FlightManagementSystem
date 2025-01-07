@@ -16,6 +16,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.cts.filter.JwtAuthFilter;
 
@@ -57,6 +60,20 @@ public class SecurityConfig {
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+    
+    @Bean
+	 public CorsFilter corsFilter() {
+       CorsConfiguration config = new CorsConfiguration();
+       config.setAllowCredentials(true);
+       config.addAllowedOrigin("http://localhost:4200");
+       config.addAllowedHeader("*");
+       config.addAllowedMethod("*");
+       
+       UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+       source.registerCorsConfiguration("/**", config);
+       
+       return new CorsFilter(source);
+   }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

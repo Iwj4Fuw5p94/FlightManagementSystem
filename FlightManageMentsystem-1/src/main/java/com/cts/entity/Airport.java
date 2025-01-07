@@ -23,9 +23,7 @@ public class Airport {
 	
 	
 	public Airport() {
-	}
-	
-	
+	}	
 	public Airport(String airportName, String airportCode, String airportLocation) {
 		super();
 		this.airportName = airportName;
