@@ -1,0 +1,16 @@
+h1{
+    color: rgb(90, 151, 151);
+
+    background-color: rgb(148, 98, 34);
+}
+button{
+    background-color: rgb(28, 28, 98);
+    color: white;
+    font: 400;
+    
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(28, 28, 77);
+}
