@@ -49,7 +49,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/auth/register", "/api/auth/authenticate").permitAll()
+                .requestMatchers("/api/auth/register", "/api/auth/authenticate","**").permitAll()
                 .and()
                 .authorizeHttpRequests().requestMatchers("/flight/**")
                 .authenticated().and()
@@ -68,10 +68,8 @@ public class SecurityConfig {
        config.addAllowedOrigin("http://localhost:4200");
        config.addAllowedHeader("*");
        config.addAllowedMethod("*");
-       
        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
        source.registerCorsConfiguration("/**", config);
-       
        return new CorsFilter(source);
    }
 

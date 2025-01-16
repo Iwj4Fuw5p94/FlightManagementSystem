@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,14 +36,14 @@ public class FlightController {
 	IFlightDao iFlightDao;
 	
 	@PostMapping("/addFlight")
-	public ResponseEntity<String> addFlight(Flight flight){
-		iFlightDao.addFlight(flight);
+	public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
+		Flight dlight=iFlightDao.addFlight(flight);
 		logger.info("add flight to the database");
-		return ResponseEntity.status(HttpStatus.CREATED).body("Flight Added Successfully");
+		return ResponseEntity.status(HttpStatus.CREATED).body(flight);
 	}
 	
 	@PutMapping("/modifyFlight")
-	public ResponseEntity<Flight> modifyFlight(Flight flight){
+	public ResponseEntity<Flight> modifyFlight(@RequestBody Flight flight){
 		Flight flight2 = iFlightDao.modifyFlight(flight);
 		return ResponseEntity.status(HttpStatus.OK).body(flight2);
 	}
