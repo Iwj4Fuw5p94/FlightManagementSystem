@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Add Airport</h2>
+    <form (ngSubmit)="onSubmit()" #airportForm="ngForm">
+        <div class="form-group">
+            <label for="name">Airport Name:</label>
+            <input type="text" id="name" class="form-control" required [(ngModel)]="airport.name" name="name" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                Name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="code">Airport Code:</label>
+            <input type="text" id="code" class="form-control" required [(ngModel)]="airport.code" name="code" #code="ngModel">
+            <div [hidden]="code.valid || code.pristine" class="alert alert-danger">
+                Code is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" id="location" class="form-control" required [(ngModel)]="airport.location" name="location" #location="ngModel">
+            <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
+                Location is required
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!airportForm.form.valid">Add Airport</button>
+    </form>
+</div>

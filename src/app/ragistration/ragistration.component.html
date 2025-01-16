@@ -1,28 +1,28 @@
 <div id="main">
     <form [formGroup]="ragistrationform" (ngSubmit)="onsubmit()" class="container col-md-4 ">
-        <div class="card border">
+        <div class="card">
             <div class="form-group p-2">
-            <label for="name" class="">Enter Your Name</label><br>
-            <input class="form-control p-2" type="text" id="name" formControlName="name" required>
+            <!-- <label for="name" class="">Enter Your Name</label><br> -->
+            <input placeholder="Enter Your Name" class="form-control p-2" type="text" id="name" formControlName="name" required>
             <span *ngIf=""></span>
             </div>
             <div class="form-group p-2">
-            <label for="email">Email</label><br>
-            <input class="form-control" type="email" id="email" formControlName="email" required>
+            <!-- <label for="email">Email</label><br> -->
+            <input placeholder="Email" class="form-control" type="email" id="email" formControlName="email" required>
             </div>
             <div class="form-group p-2">
-                <label for="password">Password</label><br>
-                <input class="form-control" type="password" id="password" formControlName="password" required>
+                <!-- <label for="password">Password</label><br> -->
+                <input placeholder="Password"class="form-control" type="password" id="password" formControlName="password" required>
                 </div>
     <div class="form-group p-2">
-            <label for="role">Enter Your role</label><br>
-            <input class="form-control" type="text" id="role" formControlName="role" required>
+            <!-- <label for="role">Enter Your role</label><br> -->
+            <input placeholder="Enter Your role"  class="form-control" type="text" id="role" formControlName="role" required>
             </div>
 
             <div id="button " class="form-group p-2">
                 <button (click)="loginnavigate()" type="submit" class="btn btn-primary">submit</button>
             </div>
-            <p>  do you want to Login ? <a routerLink="/login" >Login</a></p>
+            <p>do you want to Login ? <a routerLink="/login" >Login</a></p>
         </div>
     </form>
 </div>

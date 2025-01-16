@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./addairport.component.css']
 })
 export class AddairportComponent {
+  // constructor(private flight:) { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+onSubmit() {
+throw new Error('Method not implemented.');
+}
+airport: any;
 
 }

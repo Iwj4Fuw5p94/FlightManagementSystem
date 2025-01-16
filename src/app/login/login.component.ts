@@ -1,45 +1,78 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserInfo } from '../model/UserInfo.model';
+import { RagistrationService } from '../ragistration.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginformgroup!: FormGroup;
-  
-    email: string = 'ap@gmail.com';
-    password: string = '123';
-  
-    constructor(private formbuilder: FormBuilder, private route: Router) {
-    }
-  
-    ngOnInit() {
-      this.createloginform();
-    }
-    createloginform() {
-      this.loginformgroup = this.formbuilder.group({
-        email: ['', Validators.required],
-        password: ['', Validators.required]
-      })
-    }
-    onsubmit() {
-      if (this.loginformgroup.invalid) {
-        alert("some fild are mising");
+ ragistrationform!: FormGroup;
+      loginform!: FormGroup;
+      UserInfo!: UserInfo;;
+      activateform:string='';
+      constructor(private  formBuilder: FormBuilder, private router:Router,private ragistrationservice:RagistrationService) {
+        this.UserInfo=new UserInfo();
       }
-      else{
-        const enteremail=this.loginformgroup.value.email;
-        const enterpassword=this.loginformgroup.value.password;
-        if(enteremail==this.email && enterpassword==this.password){
-        alert("you are ready to login");
-        console.log(this.loginformgroup.value);
-        this.route.navigate(['/dashboard']);
+      ngOnInit() {
+        this.createRagistrationFrom();
+        
       }
-      else{
-        alert("invalid email and password")
+      createRagistrationFrom(){
+         this.ragistrationform = this.formBuilder.group({
+          name: ['',Validators.required],
+          password:['',Validators.required],
+         })
       }
-    }
-  }
+      get f() {
+         return this.ragistrationform?.controls; }
+      // onsubmit(){
+      //   // event.preventDefault();
+      //   if(this.ragistrationform?.value){
+      //     this.UserInfo.name=this.f['name'].value;
+      //     this.UserInfo.password=this.f['password'].value;
+      //   }
+      //   this.ragistrationservice.generatetoken(this.UserInfo).subscribe(
+      //    (response: any) => {
+      //     localStorage.setItem('authToken', response.token);
+      //      console.log(response);
+      //     alert('data successfully inserted:');
+      //   });
+      //   if(this.ragistrationform?.invalid){
+      //      console.log("Form is invalid")
+      //      alert("please enter some value")
+      //   }
+      //  }
+      onsubmit() {
+        if (this.ragistrationform.valid) {
+          this.UserInfo.name = this.f['name'].value;
+          this.UserInfo.password = this.f['password'].value;
+      
+          this.ragistrationservice.generatetoken(this.UserInfo).subscribe(
+            (response: any) => {
+              console.log('Full response from token API:', response);
+      
+              // Save the token directly since it's a plain string
+              if (response) {
+                localStorage.setItem('authToken', response);
+                alert('Login successful! Navigating to the flight page...');
+                this.router.navigate(['/flight']);
+              } else {
+                alert('Token not received from server.');
+              }
+            },
+            (error) => {
+              console.error('Error generating token:', error);
+              alert('Login failed. Please check your credentials.');
+            }
+          );
+        } else {
+          alert('Please fill in all required fields.');
+        }
+      }
 
+  
+       
 }
