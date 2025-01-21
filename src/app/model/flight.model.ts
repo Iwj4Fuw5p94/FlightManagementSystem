@@ -1,7 +1,7 @@
 export class flight{
-    flightNumber:Number=0;
+    flightNumber:number=0;
     flightModel:string='';
     carrierName:string='';
-    seatCapacity:Number=0;
+    seatCapacity:number=0;
     
 }

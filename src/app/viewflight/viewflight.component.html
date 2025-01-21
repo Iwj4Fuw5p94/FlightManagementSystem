@@ -1,1 +1,26 @@
-<p>viewflight works!</p>
+<div>
+    <h2>View Flights</h2>
+
+<button (click)="viewflights()">Fetch Flights</button>
+</div>
+<div *ngIf="flight">
+    <h2>Flight List</h2>
+    <ul>
+        <li *ngFor="let f of flight">
+            <p>{{f.flightNumber}}</p>
+            <table>
+                <tr>
+                    <td>{{f.flightNumber}}</td>
+                    <td>{{f.carrierName}}</td>
+                    <td>{{f.seatCapacity}}</td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+</div>
+<div *ngIf="flight && flight.length === 0">
+    <p>No flights available.</p>
+</div>
+
+  
+ 

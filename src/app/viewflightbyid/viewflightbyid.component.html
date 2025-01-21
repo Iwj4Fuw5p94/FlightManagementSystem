@@ -1,0 +1,56 @@
+    <form [formGroup]="formgroup" (ngSubmit)="viewflightById()">
+        <input type="text" formControlName="flightNumber" placeholder="Enter Flight Number">
+        <button type="submit">Search</button><button (click)="deleteflightbyid()" type="button">deleteflight</button>
+    </form>
+<div *ngIf="flight">
+    <h2>Flight List</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Carrier Name</th>
+          <th>Seat Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="flight">
+          <td>{{ flight.flightNumber }}</td>
+          <td>{{ flight.carrierName }}</td>
+          <td>{{ flight.seatCapacity }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<!-- <div>
+  <form [formGroup]="formgroup" (ngSubmit)="viewflightById()">
+    <input type="text" formControlName="flightNumber" placeholder="Enter Flight Number" />
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<div *ngIf="flight">
+  <h2>Flight List</h2>
+  <ul>
+      <li>
+          <p>{{flight.flightNumber}}</p>
+          <table>
+              <tr>
+                  <td>{{flight.flightNumber}}</td>
+                  <td>{{flight.carrierName}}</td>
+                  <td>{{flight.seatCapacity}}</td>
+              </tr>
+          </table>
+      </li>
+  </ul>
+</div> -->
+
+<!-- <div *ngIf="flight ">
+  <p>No flights available.</p>
+</div> -->
+
+<div>
+<h3>Debug Data:</h3>
+<pre>{{ flight | json }}</pre>
+</div>
+

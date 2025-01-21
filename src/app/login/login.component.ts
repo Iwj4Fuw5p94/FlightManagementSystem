@@ -58,7 +58,7 @@ export class LoginComponent {
               if (response) {
                 localStorage.setItem('authToken', response);
                 alert('Login successful! Navigating to the flight page...');
-                this.router.navigate(['/flight']);
+                this.router.navigate(['/viewflightbyid']);
               } else {
                 alert('Token not received from server.');
               }
@@ -71,8 +71,5 @@ export class LoginComponent {
         } else {
           alert('Please fill in all required fields.');
         }
-      }
-
-  
-       
+      }     
 }

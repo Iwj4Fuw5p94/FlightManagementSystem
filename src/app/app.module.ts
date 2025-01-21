@@ -9,13 +9,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddairportComponent } from './addairport/addairport.component';
 import { FlightComponent } from './flight/flight.component';
+import { ViewflightComponent } from './viewflight/viewflight.component';
+import { ViewflightbyidComponent } from './viewflightbyid/viewflightbyid.component';
 @NgModule({
   declarations: [
     AppComponent,
     RagistrationComponent,
     LoginComponent,
     AddairportComponent,
-    FlightComponent
+    FlightComponent,
+    ViewflightComponent,
+    ViewflightbyidComponent
   ],
   imports: [
     BrowserModule,

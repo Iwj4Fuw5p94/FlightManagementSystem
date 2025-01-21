@@ -12,8 +12,6 @@ export class TokenService {
   gettoken(): string | null {
     return localStorage.getItem('authToken');
   }
-  
-
   // Setter for the token
   setToken(token: any) {
     this.token = token;
