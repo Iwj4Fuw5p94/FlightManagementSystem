@@ -1,0 +1,35 @@
+<form (ngSubmit)="viewscheduleflight()">
+    <button type="submit">viewscheduleflight</button>
+</form>
+<form (ngSubmit)="viewscheduleflightbyflightnumber()">
+    <input type="number" placeholder="Enter the flight number" [(ngModel)]="flightNumber">
+    <button type="submit">viewscheduleflight</button>
+</form>
+
+<div *ngFor="let schedule of schedule">
+    <div class="schedule-details">
+        <h2>Schedule Details</h2>
+        <div>
+          <label for="schedduleId">Schedule ID:</label>
+          <span id="schedduleId">{{ schedule.schedduleId }}</span>
+        </div>
+        <div>
+          <label for="sourceAirport">Source Airport:</label>
+          <span id="sourceAirport">{{ schedule.sourceAirport }}</span>
+        </div>
+        <div>
+          <label for="destinationAirport">Destination Airport:</label>
+          <span id="destinationAirport">{{ schedule.destinationAirport }}</span>
+        </div>
+        <div>
+          <label for="arrivalTime">Arrival Time:</label>
+          <span id="arrivalTime">{{ schedule.arrivalTime | date: 'short' }}</span>
+        </div>
+        <div>
+          <label for="departureTime">Departure Time:</label>
+          <span id="departureTime">{{ schedule.departureTime | date: 'short' }}</span>
+        </div>
+      </div>
+</div>
+
+{{schedule|json}}

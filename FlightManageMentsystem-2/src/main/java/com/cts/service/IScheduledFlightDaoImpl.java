@@ -11,15 +11,15 @@ import com.cts.exceptions.FlightNotFoundEXception;
 
 public interface IScheduledFlightDaoImpl{
 	
-	public ScheduleFlight scheduleFlight(ScheduleFlight scheduleFlight);
+	public Schedule scheduleFlight(Schedule scheduleFlight);
 	
-	public List<ScheduleFlight> viewScheduleFlights(Airport aipAirportFrom,Airport airportTo,LocalDate localDate)throws FlightNotFoundEXception;
+	public List<Schedule> viewScheduleFlights(Airport aipAirportFrom,Airport airportTo,LocalDate localDate)throws FlightNotFoundEXception;
 	
-	public ScheduleFlight viewScheduleFlight(long flightNumber)throws FlightNotFoundEXception;
+	public Schedule viewScheduleFlight(long flightNumber)throws FlightNotFoundEXception;
 	
-	public List<ScheduleFlight> viewScheduleFlights()throws FlightNotFoundEXception;
+	public List<Schedule> viewScheduleFlights()throws FlightNotFoundEXception;
 	
-	public ScheduleFlight modifyScheduleFlight(Flight flight,Schedule schedule,long flightNumber);
+	public Schedule modifyScheduleFlight(Flight flight,Schedule schedule,long flightNumber);
 	
 //	doubt i have 
 	public String deleteScheduleFlight(long flightNumber);

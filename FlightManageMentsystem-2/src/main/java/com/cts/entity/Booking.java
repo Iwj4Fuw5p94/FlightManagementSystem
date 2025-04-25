@@ -1,124 +1,257 @@
+//package com.cts.entity;
+//
+//import java.time.LocalDate;
+//import java.util.List;
+//
+//
+//import org.springframework.stereotype.Component;
+//
+//import jakarta.persistence.CascadeType;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+//import jakarta.persistence.Id;
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToOne;
+//
+//@Entity
+//public class Booking {
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	private long bookingId;
+//	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+//	private User userId;
+//	
+//	private LocalDate bookingDate;
+//	
+//	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL,orphanRemoval = true)
+////	@JoinColumn(name = "pnrNumber")
+//	private List<Passanger> passangerList;
+//	
+//	private double ticketCost;
+//	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "flightNumber")
+//	private Flight flight;
+//	
+//	private long noOfPassangers;
+//	
+//	public Booking() {
+//		
+//	}
+//
+//	public Booking(long bookingId, User userId, LocalDate bookingDate, List<Passanger> passangerList, double ticketCost,
+//			Flight flight, long noOfPassangers) {
+//		super();
+//		this.bookingId = bookingId;
+//		this.userId = userId;
+//		this.bookingDate = bookingDate;
+//		this.passangerList = passangerList;
+//		this.ticketCost = ticketCost;
+//		this.flight = flight;
+//		this.noOfPassangers = noOfPassangers;
+//	}
+//
+//	public long getBookingId() {
+//		return bookingId;
+//	}
+//
+//	public void setBookingId(long bookingId) {
+//		this.bookingId = bookingId;
+//	}
+//
+//	public User getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(User userId) {
+//		this.userId = userId;
+//	}
+//
+//	public LocalDate getBookingDate() {
+//		return bookingDate;
+//	}
+//
+//	public void setBookingDate(LocalDate bookingDate) {
+//		this.bookingDate = bookingDate;
+//	}
+//
+//	public List<Passanger> getPassangerList() {
+//		return passangerList;
+//	}
+//
+//	public void setPassangerList(List<Passanger> passangerList) {
+//		this.passangerList = passangerList;
+//	}
+//
+//	public double getTicketCost() {
+//		return ticketCost;
+//	}
+//
+//	public void setTicketCost(double ticketCost) {
+//		this.ticketCost = ticketCost;
+//	}
+//
+//	public Flight getFlight() {
+//		return flight;
+//	}
+//
+//	public void setFlight(Flight flight) {
+//		this.flight = flight;
+//	}
+//
+//	public long getNoOfPassangers() {
+//		return noOfPassangers;
+//	}
+//
+//	public void setNoOfPassangers(long noOfPassangers) {
+//		this.noOfPassangers = noOfPassangers;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "Booking [bookingId=" + bookingId + ", userId=" + userId + ", bookingDate=" + bookingDate
+//				+ ", passangerList=" + passangerList + ", ticketCost=" + ticketCost + ", flight=" + flight
+//				+ ", noOfPassangers=" + noOfPassangers + "]";
+//	}	
+//
+//}
+
+
+
 package com.cts.entity;
 
 import java.time.LocalDate;
 import java.util.List;
 
-
-import org.springframework.stereotype.Component;
-
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Booking {
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long bookingId;
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-	private User userId;
-	
-	private LocalDate bookingDate;
-	
-	@OneToMany(mappedBy = "booking", cascade = CascadeType.ALL,orphanRemoval = true)
-//	@JoinColumn(name = "pnrNumber")
-	private List<Passanger> passangerList;
-	
-	private double ticketCost;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "flightNumber")
-	private Flight flight;
-	
-	private long noOfPassangers;
-	
-	public Booking() {
-		
-	}
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long bookingId;
 
-	public Booking(long bookingId, User userId, LocalDate bookingDate, List<Passanger> passangerList, double ticketCost,
-			Flight flight, long noOfPassangers) {
-		super();
-		this.bookingId = bookingId;
-		this.userId = userId;
-		this.bookingDate = bookingDate;
-		this.passangerList = passangerList;
-		this.ticketCost = ticketCost;
-		this.flight = flight;
-		this.noOfPassangers = noOfPassangers;
-	}
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "userId")
+    private User userId;
 
-	public long getBookingId() {
-		return bookingId;
-	}
+    @Column(name = "bookingDate")
+    private LocalDate bookingDate;
 
-	public void setBookingId(long bookingId) {
-		this.bookingId = bookingId;
-	}
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Passanger> passangerList;
 
-	public User getUserId() {
-		return userId;
-	}
+    @Column(name = "ticketCost")
+    private double ticketCost;
 
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "flightNumber")
+    private Flight flight;
 
-	public LocalDate getBookingDate() {
-		return bookingDate;
-	}
+    @Column(name = "noOfPassangers")
+    private long noOfPassangers;
 
-	public void setBookingDate(LocalDate bookingDate) {
-		this.bookingDate = bookingDate;
-	}
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "schedduleId")
+    private Schedule schedule;
 
-	public List<Passanger> getPassangerList() {
-		return passangerList;
-	}
+    public Booking() {}
 
-	public void setPassangerList(List<Passanger> passangerList) {
-		this.passangerList = passangerList;
-	}
+    public Booking(long bookingId, User userId, LocalDate bookingDate, List<Passanger> passangerList, double ticketCost,
+                   Flight flight, long noOfPassangers, Schedule schedule) {
+        this.bookingId = bookingId;
+        this.userId = userId;
+        this.bookingDate = bookingDate;
+        this.passangerList = passangerList;
+        this.ticketCost = ticketCost;
+        this.flight = flight;
+        this.noOfPassangers = noOfPassangers;
+        this.schedule = schedule;
+    }
 
-	public double getTicketCost() {
-		return ticketCost;
-	}
+    // Getters and setters
 
-	public void setTicketCost(double ticketCost) {
-		this.ticketCost = ticketCost;
-	}
+    public long getBookingId() {
+        return bookingId;
+    }
 
-	public Flight getFlight() {
-		return flight;
-	}
+    public void setBookingId(long bookingId) {
+        this.bookingId = bookingId;
+    }
 
-	public void setFlight(Flight flight) {
-		this.flight = flight;
-	}
+    public User getUserId() {
+        return userId;
+    }
 
-	public long getNoOfPassangers() {
-		return noOfPassangers;
-	}
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
 
-	public void setNoOfPassangers(long noOfPassangers) {
-		this.noOfPassangers = noOfPassangers;
-	}
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
 
-	@Override
-	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", userId=" + userId + ", bookingDate=" + bookingDate
-				+ ", passangerList=" + passangerList + ", ticketCost=" + ticketCost + ", flight=" + flight
-				+ ", noOfPassangers=" + noOfPassangers + "]";
-	}
-	
-		
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
 
+    public List<Passanger> getPassangerList() {
+        return passangerList;
+    }
+
+    public void setPassangerList(List<Passanger> passangerList) {
+        this.passangerList = passangerList;
+    }
+
+    public double getTicketCost() {
+        return ticketCost;
+    }
+
+    public void setTicketCost(double ticketCost) {
+        this.ticketCost = ticketCost;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public long getNoOfPassangers() {
+        return noOfPassangers;
+    }
+
+    public void setNoOfPassangers(long noOfPassangers) {
+        this.noOfPassangers = noOfPassangers;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking [bookingId=" + bookingId + ", userId=" + userId + ", bookingDate=" + bookingDate
+                + ", passangerList=" + passangerList + ", ticketCost=" + ticketCost + ", flight=" + flight
+                + ", noOfPassangers=" + noOfPassangers + ", schedule=" + schedule + "]";
+    }
 }

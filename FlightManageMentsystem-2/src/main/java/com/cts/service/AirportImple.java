@@ -23,4 +23,10 @@ public class AirportImple implements IAirport{
 		return iAirport.findByAirportCode(airportCode);
 	}
 
+	@Override
+	public Airport addAirport(Airport airport) {
+		// TODO Auto-generated method stub
+		return iAirport.save(airport);
+	}
+
 }

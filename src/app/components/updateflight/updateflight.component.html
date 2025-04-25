@@ -1,0 +1,19 @@
+<body>
+    <form [formGroup]="addflightform" (ngSubmit)="onsubmit()" class="container col-md-4 ">
+        <div class="card">
+            <div class="form-group p-2">
+            <input placeholder="Enter Your flightModel" class="form-control p-2" type="text" id="flightModel" formControlName="flightModel" >
+            </div>
+            <div class="form-group p-2">
+                <input type="number" placeholder="Enter your flight number" class="form-control" id="flightNumber" formControlName="flightNumber" >
+            </div>
+            <div class="form-group p-2">    
+                <input type="number" placeholder="Enter your seatCapacity" class="form-control" id="seatCapacity" formControlName="seatCapacity" >
+            </div>
+            <div class="form-group p-2">    
+                <input type="text" placeholder="Enter your fcarrierName" class="form-control" id="carrierName" formControlName="carrierName" >
+            </div>
+            <button class="btn btn-primary" type="submit">submit</button>
+            </div>
+    </form>
+</body>

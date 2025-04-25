@@ -11,6 +11,15 @@ import { AddairportComponent } from './addairport/addairport.component';
 import { FlightComponent } from './flight/flight.component';
 import { ViewflightComponent } from './viewflight/viewflight.component';
 import { ViewflightbyidComponent } from './viewflightbyid/viewflightbyid.component';
+import { ViewairportComponent } from './components/viewairport/viewairport.component';
+import { UpdateflightComponent } from './components/updateflight/updateflight.component';
+import { AdduserComponent } from './components/user/adduser/adduser.component';
+import { DeleteuserComponent } from './components/user/deleteuser/deleteuser.component';
+import { ViewallComponent } from './components/user/viewall/viewall.component';
+import { AddbookingComponent } from './components/booking/addbooking/addbooking.component';
+import { ScheduleflightComponent } from './components/scheduleflight/scheduleflight.component';
+import { ViewscheduleflightComponent } from './components/viewscheduleflight/viewscheduleflight.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +28,16 @@ import { ViewflightbyidComponent } from './viewflightbyid/viewflightbyid.compone
     AddairportComponent,
     FlightComponent,
     ViewflightComponent,
-    ViewflightbyidComponent
+    ViewflightbyidComponent,
+    ViewairportComponent,
+    UpdateflightComponent,
+    AdduserComponent,
+    DeleteuserComponent,
+    ViewallComponent,
+    AddbookingComponent,
+    ScheduleflightComponent,
+    ViewscheduleflightComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

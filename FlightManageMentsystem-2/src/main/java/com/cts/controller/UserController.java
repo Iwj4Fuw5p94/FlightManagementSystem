@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +17,10 @@ import com.cts.exceptions.UserNotFoundException;
 import com.cts.service.IUser;
 import com.cts.service.UserImple;
 
+import ch.qos.logback.classic.Logger;
 import jakarta.persistence.PostLoad;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -30,9 +31,9 @@ public class UserController {
 	UserImple iserImple;
 	
 	@PostMapping("/add")
-	
 	public User addUser(@RequestBody User user) throws UserNotFoundException {
 		System.out.println("Hello Welcome to the Front page ");
+		System.out.println(user);
 		return iserImple.addUser(user);
 	}
 	
@@ -42,22 +43,20 @@ public class UserController {
 
 	}
 	@GetMapping("/viewall")
-	public List<User> viewList(){
+	public List<User> viewList(){		
 		return iserImple.viewUser();
 	}
 	
 	@DeleteMapping("/deleteById{userId}")
-	public String deleteString(@RequestBody @PathVariable long userId) {
+	public String deleteString(@RequestBody @PathVariable long userId) throws UserNotFoundException {
 		iserImple.deleteUser(userId);
+		
 		return "user deleted ";
 	}
 	
-	
-	@PutMapping("update/{id}")
+	@PutMapping("/update")
 	
 	public User updateUser(@RequestBody User user) throws UserNotFoundException{
 		return iserImple.updateUSer(user);
 	}
-	
-	
 }

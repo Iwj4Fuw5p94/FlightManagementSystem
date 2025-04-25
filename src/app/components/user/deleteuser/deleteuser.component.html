@@ -1,0 +1,13 @@
+
+<div class="delete-user-container">
+    <h2>Delete User</h2>
+    
+    <form (ngSubmit)="deleteuser()">
+      <div class="form-group">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" [(ngModel)]="userId" name="userId" required>
+      </div>
+      <button type="submit" class="btn btn-danger">Delete User</button>
+    </form>
+  </div>
+  

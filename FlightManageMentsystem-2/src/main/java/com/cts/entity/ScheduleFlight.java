@@ -10,7 +10,6 @@ import jakarta.persistence.OneToOne;
 @Entity
 
 public class ScheduleFlight {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long scheduleFlightId;
@@ -22,13 +21,8 @@ public class ScheduleFlight {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Schedule schedule;
-	
 	public ScheduleFlight() {
-		
-
 	}
-
-	
 	
 	public ScheduleFlight(Flight flight, long availableSeats, Schedule schedule) {
 		super();
@@ -70,6 +64,4 @@ public class ScheduleFlight {
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-	
-
 }

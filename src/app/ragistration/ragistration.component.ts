@@ -13,9 +13,8 @@ import { UserInfo } from '../model/UserInfo.model';
 })
 export class RagistrationComponent {
   ragistrationform!: FormGroup;
-    loginform!: FormGroup;
     UserInfo!: UserInfo;;
-    activateform:string='';
+    activateform:boolean=false;
     constructor(private  formBuilder: FormBuilder, private router:Router,private ragistrationservice:RagistrationService) {
       this.UserInfo=new UserInfo();
     }
@@ -25,10 +24,10 @@ export class RagistrationComponent {
     }
     createRagistrationFrom(){
        this.ragistrationform = this.formBuilder.group({
-        name: ['',Validators.required],
-        email : ['',Validators.required ],
-        password:['',Validators.required],
-        role:['',Validators.required]
+        name: ['jag',Validators.required],
+        email : ['jag@gmail.com',Validators.required ],
+        password:['123456',Validators.required],
+        role:['user',Validators.required]
        })
     }
     get f() {
@@ -40,26 +39,28 @@ export class RagistrationComponent {
         this.UserInfo.email=this.f['email'].value;
         this.UserInfo.password=this.f['password'].value;
         this.UserInfo.role='User';
+        this.ragistrationservice.register(this.UserInfo).subscribe(data=>
+        {
+         console.log(data);
+          alert("data successfully inserted");
+          this.activateform=true;
+          this.loginnavigate()
+        })  
+        
       }
-      this.ragistrationservice.register(this.UserInfo).subscribe(data=>{
-        console.log(data);
-        alert("data successfully inserted");
-      })
-
       if(this.ragistrationform?.invalid){
          console.log("Form is invalid")
          alert("please enter some value")
       }
+    
       // else{
       // console.log("Registrations Details",this.ragistrationform.value);
       // alert("data successfully inserted");
       // }
-    }
-    navigate(){
-      this.router.navigate(['/login']);
+    
     }
     loginnavigate(){
-      if(this.ragistrationform.valid){
+      if(this.activateform=true){
         alert("you are now go the login page")
         this.router.navigate(['/login'])
       }

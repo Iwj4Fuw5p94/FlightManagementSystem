@@ -22,7 +22,6 @@ import org.springframework.web.filter.CorsFilter;
 
 import com.cts.filter.JwtAuthFilter;
 
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -49,7 +48,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/auth/register", "/api/auth/authenticate","**").permitAll()
+                .requestMatchers("/swagger-ui/**","/api/auth/register", "/api/auth/authenticate","**").permitAll()
                 .and()
                 .authorizeHttpRequests().requestMatchers("/flight/**")
                 .authenticated().and()

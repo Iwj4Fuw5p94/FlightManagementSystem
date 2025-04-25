@@ -14,7 +14,7 @@ import com.cts.entity.ScheduleFlight;
 import com.cts.exceptions.FlightNotFoundEXception;
 
 @Repository
-public interface IScheduledFlightDao extends JpaRepository<ScheduleFlight, Long> {
+public interface IScheduledFlightDao extends JpaRepository<Schedule, Long> {
 	
 	
 	@Query(value = "SELECT * FROM ScheduleFlight s " +
@@ -22,6 +22,5 @@ public interface IScheduledFlightDao extends JpaRepository<ScheduleFlight, Long>
               "WHERE sc.source_airport_id = :sourceAirportId " +
               "AND sc.destination_airport_id = :destinationAirportId " +
               "AND sc.departure_time >= :departureDate", nativeQuery = true)
-	
      public List<ScheduleFlight> viewScheduleFlights(long sourceAirportId, long destinationAirportId, LocalDate departureDate) throws FlightNotFoundEXception;
 }

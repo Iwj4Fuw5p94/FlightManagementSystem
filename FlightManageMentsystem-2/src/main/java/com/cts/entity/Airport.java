@@ -1,7 +1,6 @@
 package com.cts.entity;
 
 import org.springframework.stereotype.Component;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,18 +9,12 @@ import jakarta.persistence.Table;
 
 @Entity
 public class Airport {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long airportno;
-	
 	private String airportName;
-	
 	private String airportCode;
-	
 	private String airportLocation;
-	
-	
 	public Airport() {
 	}	
 	public Airport(String airportName, String airportCode, String airportLocation) {
@@ -30,8 +23,6 @@ public class Airport {
 		this.airportCode = airportCode;
 		this.airportLocation = airportLocation;
 	}
-
-
 	public String getAirportName() {
 		return airportName;
 	}
@@ -56,7 +47,5 @@ public class Airport {
 	public String toString() {
 		return "Airport [airportName=" + airportName + ", airportCode=" + airportCode + ", airportLocation="
 				+ airportLocation + "]";
-	}
-		
-
+	}		
 }

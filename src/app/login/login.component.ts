@@ -22,8 +22,8 @@ export class LoginComponent {
       }
       createRagistrationFrom(){
          this.ragistrationform = this.formBuilder.group({
-          name: ['',Validators.required],
-          password:['',Validators.required],
+          name: ['john',Validators.required],
+          password:['john',Validators.required],
          })
       }
       get f() {
@@ -58,7 +58,7 @@ export class LoginComponent {
               if (response) {
                 localStorage.setItem('authToken', response);
                 alert('Login successful! Navigating to the flight page...');
-                this.router.navigate(['/viewflightbyid']);
+                this.router.navigate(['/viewcheduleflight']);
               } else {
                 alert('Token not received from server.');
               }

@@ -16,7 +16,7 @@ public interface IUser {
 	
 	public User updateUSer(User user) throws UserNotFoundException;
 	
-	public void deleteUser(Long userId);
+	public void deleteUser(Long userId) throws UserNotFoundException;
 	
 	
 	

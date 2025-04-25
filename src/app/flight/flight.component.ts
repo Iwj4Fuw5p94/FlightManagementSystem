@@ -78,7 +78,7 @@ export class FlightComponent {
     }
     this.flightservice.addflight(this.flight, tokenstr).subscribe(data=>{
       console.log(data);
-      alert("data successfully inserted");
+      alert("flight successfully added");
     })
     if(this.addflightform?.invalid){
       console.log("Form is invalid")

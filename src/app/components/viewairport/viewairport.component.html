@@ -1,0 +1,37 @@
+<p>viewairport works!</p>
+<form>
+    <button type="button" (click)="viewairport()">View Airport</button>
+    <br>
+    <!-- <a routerLink="/login" class=" btn btn-primary"> login</a> -->
+</form>
+<br>
+<br>
+<form [formGroup]="formgroup" (Submit)="viewairportbyairportcode()">
+    <input type="text" placeholder="Enter the airportCode here " formControlName="airportCode">
+
+        <button type="button" (click)="viewairportbyairportcode()">View Airport</button><br>
+    <br>
+    <a routerLink="/login" class=" btn btn-primary"> login</a>
+</form>
+<div *ngIf="Airport">
+    <div *ngFor="let airport of Airport">
+        <p> Airport Name: {{airport.airportName}}</p>
+        <p> Airport Location: {{airport.airportLocation}}</p>
+        <p> Airport Code: {{airport.airportCode}}</p>
+        <p> Airport Number: {{airport.airportno}}</p>
+    </div>
+</div>
+
+<div *ngIf="airpo">
+        <p> Airport Name: {{airpo.airportName}}</p>
+        <p> Airport Location: {{airpo.airportLocation}}</p>
+        <p> Airport Code: {{airpo.airportCode}}</p>
+        <p> Airport Number: {{airpo.airportno}}</p>
+    </div>
+
+
+<!-- <div *ngIf="Airport && Airport.length === 0">
+    <p>No flights available.</p>
+</div> -->
+<!-- {{Airport | json}} -->
+

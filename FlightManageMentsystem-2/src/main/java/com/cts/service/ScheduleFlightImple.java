@@ -22,29 +22,28 @@ public class ScheduleFlightImple implements IScheduledFlightDaoImpl{
 	IScheduledFlightDao iScheduledFlightDao;
 	
 	@Override
-	public ScheduleFlight scheduleFlight(ScheduleFlight scheduleFlight) {
-		
+	public Schedule scheduleFlight(Schedule scheduleFlight) {
 		return iScheduledFlightDao.save(scheduleFlight);
 	}
 	
 	@Override
-	public List<ScheduleFlight> viewScheduleFlights(Airport aipAirportFrom, Airport airportTo, LocalDate localDate) {
+	public List<Schedule> viewScheduleFlights(Airport aipAirportFrom, Airport airportTo, LocalDate localDate) {
 		return null;
 	}
 
 	@Override
-	public ScheduleFlight viewScheduleFlight(long flightNumber) {
+	public Schedule viewScheduleFlight(long flightNumber) {
 		
 		return iScheduledFlightDao.findById(flightNumber).orElse(null);
 	}
 
 	@Override
-	public List<ScheduleFlight> viewScheduleFlights() {
+	public List<Schedule> viewScheduleFlights() {
 		return iScheduledFlightDao.findAll();
 	}
 
 	@Override
-	public ScheduleFlight modifyScheduleFlight(Flight flight, Schedule schedule, long flightNumber) {
+	public Schedule modifyScheduleFlight(Flight flight, Schedule schedule, long flightNumber) {
 
 		return null;
 	}

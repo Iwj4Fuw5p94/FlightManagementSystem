@@ -9,17 +9,8 @@ import { retry } from 'rxjs';
 export class flightService {
   baseUrl:string="http://localhost:8080/api/";
   basesUrl:string="http://localhost:8080/api/auth/"
-
   constructor(private http:HttpClient) { 
-
   }
-
-  getGeneratedToken(requestBody: any) {
-    return this.http.post(this.basesUrl + 'authenticate', requestBody, {
-      responseType: 'text' as 'json',
-    });
-  }
-
 
   addflight(flight:flight,token:string){
     let tokenStr = 'Bearer '+ token;
@@ -46,11 +37,15 @@ export class flightService {
     console.log(tokenstr);
     const headers=new HttpHeaders().set('Authorization',tokenstr);
     return this.http.delete(`${this.baseUrl}deleteFlight/${flightNumber}`,{headers,responseType:'text' as 'json'});
-    // let tokenStr = 'Bearer '+ token;
-    // console.log(tokenStr)
-    // const headers = new HttpHeaders().set('Authorization', tokenStr);
-    // return this.http.delete(`${this.baseUrl}deleteFlight/${flightNumber}`,{headers,responseType: 'text' as 'json'});
+   
+  }
 
+  updateflight(flight:flight,token:any){
+    let tokenstr='Bearer '+token;
+    console.log(tokenstr);
+    const headers=new HttpHeaders().set('Authorization',tokenstr);
+
+    return this.http.put(this.baseUrl+"modifyFlight",flight,{headers,responseType:'text' as 'json'})
   }
   // addflight(flightData: any, tokenstr: string): Observable<any> {
   //   const token = localStorage.getItem('authToken'); // Retrieve token from localStorage

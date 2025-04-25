@@ -11,7 +11,7 @@ export class RagistrationService {
 
   constructor(private http:HttpClient) {}
   register(userInfo:UserInfo){
-    return this.http.post(`${this.baseUrl}`,userInfo);
+    return this.http.post(`${this.baseUrl}`,userInfo,{responseType:'text' as 'json'});
   }
   generatetoken(userInfo:UserInfo){
       return this.http.post(`${this.basesUrl}`,userInfo,{responseType:'text' as 'json'});

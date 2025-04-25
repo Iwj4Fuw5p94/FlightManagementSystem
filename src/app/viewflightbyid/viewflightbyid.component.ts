@@ -10,7 +10,7 @@ import { flight } from '../model/flight.model';
 export class ViewflightbyidComponent {
   formgroup!:FormGroup;
   // flight:flight[]=[];
-  flight: flight | null = null;
+  flight: any;
 
   constructor(private flightService:flightService,private formbuilder:FormBuilder) {
    }
@@ -24,7 +24,6 @@ export class ViewflightbyidComponent {
   }
   viewflightById():void{
     if(this.formgroup.valid){
-    // const flightNumber=this.formgroup.value.flightNumber;
     const flightNumber=this.formgroup.value.flightNumber;
     const authToken=localStorage.getItem('authToken');
     this.flightService.viewflightById(authToken,flightNumber).subscribe(data=>{

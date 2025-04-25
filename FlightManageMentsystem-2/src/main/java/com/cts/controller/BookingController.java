@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cts.entity.Booking;
+import com.cts.exceptions.UserNotFoundException;
 import com.cts.service.IBooking;
-
-
-
 
 @RestController
 @RequestMapping("/api")
@@ -33,9 +31,9 @@ public class BookingController{
 	IBooking iBooking;
 	
 	@PostMapping("/addBooking")
-	public ResponseEntity<String> addBooking(@RequestBody Booking booking){
-		iBooking.addBooking(booking);
-		return ResponseEntity.status(HttpStatus.CREATED).body("Booking Added Successfully"); 
+	public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) throws UserNotFoundException{
+		Booking booking2=iBooking.addBooking(booking);
+		return ResponseEntity.status(HttpStatus.CREATED).body(booking2); 
 	}
 	
 	@PutMapping("/modifyBooking")

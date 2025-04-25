@@ -49,17 +49,21 @@ public class UserImple implements IUser {
 
 	@Override
 	public User updateUSer(User user) throws UserNotFoundException {
-
 		  User existingUser = iUserDao.findById(user.getUserId()).orElseThrow(() -> new UserNotFoundException("User not found"));
 		  if(existingUser!=null) {
-			  existingUser.setUserType(user.getUserType());
+//			  existingUser.setUserType(user.getUserType());
+//			  existingUser.setEmail(user.getEmail());
+//			  existingUser.setUserPhone(user.getUserPhone());
+			  existingUser.setAddress(user.getAddress());
 			  existingUser.setEmail(user.getEmail());
-			  existingUser.setUserPhone(user.getUserPhone());
+			  existingUser.setFirstname(user.getFirstname());
+			  existingUser.setLastname(user.getLastname());
+			  existingUser.setUserphone(user.getUserphone());
 		  }
 		return iUserDao.save(existingUser);
 	}
 	@Override
-	public void deleteUser(Long userId) {
+	public void deleteUser(Long userId) throws UserNotFoundException{
 		 iUserDao.deleteById(userId);
 		return;
 	}

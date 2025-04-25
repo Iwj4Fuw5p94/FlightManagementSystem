@@ -10,5 +10,6 @@ public interface IAirport{
 	public List<Airport> viewAirports();
 	
 	public Airport viewAirport(String airportCode)throws AirportNotFoundException;
-
+	
+	public Airport addAirport(Airport airport);
 }

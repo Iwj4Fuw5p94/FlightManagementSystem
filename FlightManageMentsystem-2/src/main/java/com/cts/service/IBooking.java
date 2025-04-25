@@ -3,6 +3,7 @@ package com.cts.service;
 import java.util.List;
 
 import com.cts.entity.Booking;
+import com.cts.exceptions.UserNotFoundException;
 
 public interface IBooking{
 	

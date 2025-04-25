@@ -1,7 +1,10 @@
 package com.cts.config;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.cts.entity.UserInfo;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +18,11 @@ public class UserInfoUserDetails implements UserDetails {
 
     private String name;
     private String password;
+    
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    
     private List<GrantedAuthority> authorities;
 
     public UserInfoUserDetails(UserInfo userInfo) {

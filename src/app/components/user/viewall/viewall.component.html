@@ -1,0 +1,29 @@
+<p>viewall works!</p>
+
+<button type="menu" (click)="onsubmit()">fetch user</button>
+<form #loginform="ngForm" (ngSubmit)="viewUserById()">
+    <input type="text" [(ngModel)]="userId" name="id">
+<button type="submit">fetchuserbyid</button>
+</form>
+<div *ngIf="users">
+    <div *ngFor="let use of users">
+        <p> {{use.firstname}} </p>
+        <p> {{use.lastname}} </p>
+        <p>{{use.userId}}</p>
+        <p> {{use.address}} </p>
+        <p> {{use.email}} </p>
+        <p>{{use.userphone}}</p>
+    </div>
+</div>
+
+<div *ngIf="users">
+    
+        <p> {{users.firstname}} </p>
+        <p> {{users.lastname}} </p>
+        <p>{{users.userId}}</p>
+        <p> {{users.address}} </p>
+        <p> {{users.email}} </p>
+        <p>{{users.userphone}}</p>
+    </div>
+
+{{users| json}}
